@@ -34,6 +34,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="CsvHelper">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -42,6 +46,9 @@
     <Compile Include="JsonJourneyBreakdown.cs" />
     <Compile Include="SingleJsonFareBreakdown.cs" />
     <Compile Include="JourneyRecord.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

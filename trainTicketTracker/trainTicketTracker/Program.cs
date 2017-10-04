@@ -3,6 +3,9 @@ using System.Net; //for WebClient
 using System.Collections.Generic; //for Lists
 using System.Globalization; //for CultureInfo used by .StartsWith method
 using System.Web.Script.Serialization; //for JavaScriptSerializer
+using System.IO; //for StreamWriter
+
+using CsvHelper; //for CsvWriter
 
 
 
@@ -27,6 +30,64 @@ namespace trainTicketTracker
             {
                 item.checkRecord();
             }
+
+
+			StreamWriter writer = new StreamWriter("/Users/raamChauhan/Projects/trainTicketTracker/CSVFiles/test2.txt");
+			writer.WriteLine("Hello World");
+
+
+
+			List<String> myList = new List<string>() { "Raam", "Raj", "Ramila", "Nayan", "Pritesh" };
+
+
+	        
+			using (StreamWriter sw = new StreamWriter("/Users/raamChauhan/Projects/trainTicketTracker/CSVFiles/test4.txt"))
+	        {
+	            foreach (string item in myList)
+	            {
+	                sw.WriteLine(item);
+
+	            }
+	        }
+
+
+			// //playing with CSV
+
+			//StreamWriter textWriter = new StreamWriter("/Users/raamChauhan/Projects/trainTicketTracker/CSVFiles/test.csv");
+			//var csv = new CsvWriter(textWriter);
+
+			//csv.WriteRecords(journeyRecords);
+
+
+
+			//foreach (var item in journeyRecords)
+			//{
+			//	csv.WriteRecord(item);
+			//}
+
+
+
+			//csv.WriteRecords(journeyRecords);  //failed attempt at writing to csv
+
+
+			//foreach( var item in journeyData )
+			//{
+			//	csv.WriteField("a");
+			//	csv.NextRecord();
+			//}
+
+
+
+			//StreamReader reader = new StreamReader("/Users/raamChauhan/Projects/trainTicketTracker/CSVFiles/station_codes.csv");
+			//var csv = new CsvReader(reader);
+			//var records = csv.GetRecords<string>().ToList();
+
+			//foreach (var item in records)
+			//{
+			//	Console.WriteLine(item);
+			//}
+
+
 
 
 

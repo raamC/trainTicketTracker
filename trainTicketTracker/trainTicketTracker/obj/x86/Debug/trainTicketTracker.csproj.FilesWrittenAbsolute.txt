@@ -3,3 +3,4 @@
 /Users/raamChauhan/Projects/trainTicketTracker/trainTicketTracker/trainTicketTracker/bin/Debug/trainTicketTracker.exe
 /Users/raamChauhan/Projects/trainTicketTracker/trainTicketTracker/trainTicketTracker/obj/x86/Debug/trainTicketTracker.exe
 /Users/raamChauhan/Projects/trainTicketTracker/trainTicketTracker/trainTicketTracker/obj/x86/Debug/trainTicketTracker.pdb
+/Users/raamChauhan/Projects/trainTicketTracker/trainTicketTracker/trainTicketTracker/bin/Debug/CsvHelper.dll
