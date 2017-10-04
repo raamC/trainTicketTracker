@@ -15,27 +15,22 @@ namespace trainTicketTracker
 	{
 		public static void Main(string[] args)
 		{
-			string code = GetHTMLCode("http://ojp.nationalrail.co.uk/service/timesandfares/OXF/EVE/141017/1200/dep"); //raw HTML source code
 
 
-			foreach (var item in SplitHTMLCode(code))
-			{
-				Console.WriteLine(item);
-			}
+			string rawHTML = GetHTMLCode("http://ojp.nationalrail.co.uk/service/timesandfares/OXF/EVE/141017/1200/dep"); //raw HTML source code
+
+			DateTime departureDate = DateTime.Now.Date.AddDays(10);
+
+			List<JourneyRecord> journeyRecords = SplitIntoJourneyRecords(departureDate,rawHTML);
+
+			foreach (var item in journeyRecords)
+            {
+                item.checkRecord();
+            }
 
 
-			List<RootObject> journeyData = SplitIntoRootObjects(code);
-
-			foreach (var item in journeyData)
-			{
-				item.checkRootObject();
-			}
 
 		}
-
-
-
-
 
 
 
@@ -49,6 +44,7 @@ namespace trainTicketTracker
 			string htmlCode = client.DownloadString(url);
 			return htmlCode;
 		}
+
 
 		private static List<string> SplitHTMLCode(string HTMLcode)
 		{
@@ -72,6 +68,7 @@ namespace trainTicketTracker
 			return rawJSONdata;
 		}
 
+
 		private static RootObject ConvertFromJSON(string JSONblob)
 		{
 			JavaScriptSerializer deserializer = new JavaScriptSerializer();
@@ -79,6 +76,7 @@ namespace trainTicketTracker
 			RootObject rootObject = deserializer.Deserialize<RootObject>(JSONblob);
 			return rootObject;
 		}
+
 
 		private static List<RootObject> SplitIntoRootObjects(string HTMLcode)
 		{
@@ -92,9 +90,25 @@ namespace trainTicketTracker
 				journeyData.Add(output);
 			}
 
-			return journeyData;
-			
+			return journeyData;	
 		}
+
+
+		private static List<JourneyRecord> SplitIntoJourneyRecords(DateTime theDate, string HTMLcode)
+		{
+			List<RootObject> rootObjects = SplitIntoRootObjects(HTMLcode);
+
+			List<JourneyRecord> journeyRecords = new List<JourneyRecord>();
+
+			foreach (var item in rootObjects)
+				{
+	                journeyRecords.Add(new JourneyRecord(theDate, item));
+				}
+
+			return journeyRecords;
+		}
+
+
 
 
 	}

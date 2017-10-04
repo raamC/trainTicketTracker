@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
+
 
 namespace trainTicketTracker
 {
 	public class JourneyRecord
 	{
 
-        public DateTime date { get; set; }
+        public DateTime departureDate { get; set; }
         public string departureStationName { get; set; }
 		public string departureStationCRS { get; set; }
 		public string arrivalStationName { get; set; }
@@ -24,9 +24,9 @@ namespace trainTicketTracker
 		
 		
 
-	public JourneyRecord(DateTime theDate, RootObject rootObject)
+	public JourneyRecord(DateTime theDate, RootObject rootObject)  //constructor
 	{
-		date = theDate;
+		departureDate = theDate;
 
 		departureStationName = rootObject.jsonJourneyBreakdown.departureStationName;
 		departureStationCRS = rootObject.jsonJourneyBreakdown.departureStationCRS;
