@@ -1,8 +1,15 @@
 ﻿<Properties StartupConfiguration="{25D16427-A4CC-458F-902F-639B7542DF13}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="trainTicketTracker/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../HTMLSourceCodeManipulation/HTMLSourceCodeManipulation/Program.cs">
     <Files>
-      <File FileName="trainTicketTracker/Program.cs" Line="1" Column="1" />
+      <File FileName="trainTicketTracker/Program.cs" Line="13" Column="1" NotebookId="1" />
     </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1680" Y="23" Width="1675" Height="1005">
+        <Files>
+          <File FileName="../../HTMLSourceCodeManipulation/HTMLSourceCodeManipulation/Program.cs" Line="20" Column="41" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
