@@ -2,6 +2,10 @@
 using System.Net; //for WebClient
 using System.Collections.Generic; //for Lists
 using System.Globalization; //for CultureInfo used by .StartsWith method
+using System.Web.Script.Serialization; //for JavaScriptSerializer
+
+
+
 
 
 
@@ -13,9 +17,18 @@ namespace trainTicketTracker
 		{
 			string code = GetHTMLCode("http://ojp.nationalrail.co.uk/service/timesandfares/OXF/EVE/141017/1200/dep"); //raw HTML source code
 
+
 			foreach (var item in SplitHTMLCode(code))
 			{
 				Console.WriteLine(item);
+			}
+
+
+			List<RootObject> journeyData = SplitIntoRootObjects(code);
+
+			foreach (var item in journeyData)
+			{
+				item.checkRootObject();
 			}
 
 		}
@@ -57,6 +70,30 @@ namespace trainTicketTracker
 				}
 			}
 			return rawJSONdata;
+		}
+
+		private static RootObject ConvertFromJSON(string JSONblob)
+		{
+			JavaScriptSerializer deserializer = new JavaScriptSerializer();
+
+			RootObject rootObject = deserializer.Deserialize<RootObject>(JSONblob);
+			return rootObject;
+		}
+
+		private static List<RootObject> SplitIntoRootObjects(string HTMLcode)
+		{
+			List<string> rawJSONdata = SplitHTMLCode(HTMLcode); //rawJSONdata is now a List of strings, each containing the raw JSON data for one journey
+
+			List<RootObject> journeyData = new List<RootObject>();
+
+			foreach (string blob in rawJSONdata)
+			{
+				RootObject output = ConvertFromJSON(blob);
+				journeyData.Add(output);
+			}
+
+			return journeyData;
+			
 		}
 
 
